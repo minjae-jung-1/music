@@ -5,7 +5,7 @@ var display = document.getElementById('#display')
 var chord ="";
 //store user inputted chord to feed to display function
 
-var userChords = {};
+var userChords = [];
 
 //make a object to store user's past chords
 
@@ -46,14 +46,22 @@ function scales_chords_api_refresh(customId) {
 $("#chords").on('keypress', (e) => {
     if(e.which == 13){
         chord = e.target.value
-        console.log('here' ,chord)
+        userChords.push(e.target.value)
+        console.log('here' ,chord,userChords)
         
         $("#display").empty().append(`<ins class="scales_chords_api" chord="${chord}"></ins>`)
         scales_chords_api_onload();
         console.log(chord)
     }
-
-
 })
 
+$('#userChords').on('click' , (e) =>{
+    for(let i=0; i < userChords.length; i++){
+        $("#userDisplay").append(`<ins class="scales_chords_api" chord="${userChords[i]}"></ins>`)
+        scales_chords_api_onload();
+    }
+})
 
+$('#clear').on('click' , (e)=>{
+    $('#userDisplay').remove();
+})
