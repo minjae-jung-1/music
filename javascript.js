@@ -1,9 +1,13 @@
 var input = document.querySelector('input')
 // get element instaed
 var display = document.getElementById('#display')
-var chord;
 
-var userChords
+var chord ="";
+//store user inputted chord to feed to display function
+
+var userChords = {};
+
+//make a object to store user's past chords
 
 function scales_chords_api_onload() {
     var api_url = "https://www.scales-chords.com/api/scapi.1.3.php"; if (typeof api_override_url !== 'undefined') { var api_url = api_override_url; }
@@ -39,21 +43,17 @@ function scales_chords_api_refresh(customId) {
 
 
 
-input.addEventListener('change', (e)=>{
-    chord = e.target.value
-    console.log(chord)
-})
-
 $("#chords").on('keypress', (e) => {
     if(e.which == 13){
-        console.log("here")
+        chord = e.target.value
+        console.log('here' ,chord)
         
-        $("#display").empty().append(`<ins class="scales_chords_api" chord="emaj"></ins>`)
+        $("#display").empty().append(`<ins class="scales_chords_api" chord="${chord}"></ins>`)
         scales_chords_api_onload();
+        console.log(chord)
     }
 
 
 })
 
-console.log(chord)
 
