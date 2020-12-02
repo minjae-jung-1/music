@@ -1,6 +1,6 @@
-var input = document.querySelector('input')
-// get element instaed
-var display = document.getElementById('#display')
+var input = document.querySelector('input');
+
+var display = document.getElementById('#display');
 
 var chord ="";
 //store user inputted chord to feed to display function
@@ -65,3 +65,6 @@ $('#userChords').on('click' , (e) =>{
 $('#clear').on('click' , (e)=>{
     $('#userDisplay').remove();
 })
+
+
+//http://musictheorysite.com/namethatkey/ reference this later
